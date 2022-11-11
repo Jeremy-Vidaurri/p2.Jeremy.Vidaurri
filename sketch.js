@@ -2,6 +2,8 @@
 let capture;
 let weather;
 let temperatures;
+let aspectRatio;
+let alcFont;
 
 function preload(){
     let url = 'https://api.weather.gov/gridpoints/TOP/48,32/forecast';
@@ -9,13 +11,22 @@ function preload(){
         weather = response;
         console.log(weather);
     });
+    alcFont = loadFont('fonts/Alcubierre.otf');
 }
 
 function setup(){
     createCanvas(windowWidth-20, windowHeight-20);
+
     capture = createCapture(VIDEO);
-    capture.size(windowWidth-20,windowHeight-20);
+    aspectRatio = 9 / 16;
+    capture.size(round((windowWidth-20)*aspectRatio),(windowWidth-20));
     capture.hide();
+    while(!weather){
+        textFont(alcFont);
+        textSize(48);
+        text("Welcome", capture.width/2,capture.height/2);
+    }
+    weatherArr = getWeather();
 }
 
 function draw(){
@@ -27,7 +38,7 @@ function displayCam(){
     push();
     translate(width,0);
     scale(-1, 1);
-    image(capture, 0, 0, windowWidth-20, windowHeight-20);
+    image(capture, 0, 0);
     pop();
 }
 
