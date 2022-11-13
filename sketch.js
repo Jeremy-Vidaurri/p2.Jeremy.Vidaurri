@@ -2,10 +2,15 @@
 let capture;
 let weather;
 let temperatures;
-let aspectRatio;
+let news;
+let stories;
+let events;
+let upcomingEvents;
+
 let alcFont;
 let start;
 let curTime;
+let curDate;
 let mode = 0;
 let i = 0;
 
@@ -16,6 +21,15 @@ function preload(){
         weather = response;
     });
     alcFont = loadFont('fonts/Alcubierre.otf');
+
+    // Load JSON files for news and personal events
+    loadJSON('docs/events.json','json', function(response){
+        events = response;
+    });
+
+    loadJSON('docs/news.json','json', function(response){
+        news = response;
+    });
 }
 
 function setup(){
@@ -24,13 +38,19 @@ function setup(){
     capture = createCapture(VIDEO);
     capture.size(windowWidth-20,windowHeight-20);
     capture.hide();
+
     start = millis();
+    curDate = getDate();
+    upcomingEvents = readEvents();
+    stories = readNews();
+
 }
 
 function draw(){
     // HACK: Get the proper time by seemingly putting it in ISO8601 and using our function to convert it.
     curTime = "T".concat(hour(),":",minute());
     curTime = convertTime(curTime);
+    
 
     // Speeds for transitioning start screen
     let floatSpeed = 3.5;
@@ -117,4 +137,55 @@ function convertTime(time){
             min = "0".concat(min);
 
         return hour.toString().concat(":",min," ",period);
+}
+
+// Simple fucntion for getting the current date and formatting it in ISO8601
+function getDate(){
+    let date = "".concat(year(),"-");
+
+    if(month()<10)
+        date = "".concat(date,"0");
+    date = "".concat(date, month(),"-");
+
+    if(day()<10)
+        date = "".concat(date,"0");
+    date = "".concat(date,day());
+
+    return date;
+}
+
+// Method for comparing two dates
+// If it returns 1, the first date is before or on the second date
+// -1 means the first date is after the second date
+function compareDates(d1, d2){
+    var date1 = Date.parse(d1);
+    var date2 = Date.parse(d2);
+    if(date1 <= date2){
+        return 1
+    }
+    return -1
+}
+
+// Parsing the JSON response and putting it into an array to read.
+function readEvents(){
+    const eventsArr = []
+    for(let i = 0; i < events.events.length; i++){
+        // Check the current date and only append upcoming events.
+        if(compareDates(curDate,events.events[i].date) == 1){
+            eventsArr.push([events.events[i].title,events.events[i].date,events.events[i].time]);
+        }
+    }
+    return eventsArr;
+}
+
+// Parsing the JSON response and putting it into an array to read.
+function readNews(){
+    const newsAr = []
+    for(let i = 0; i < news.stories.length; i++){
+        // Check the current date and only append upcoming events.
+        if(compareDates(curDate,news.stories[i].date) == 1){
+            newsAr.push([news.stories[i].title,news.stories[i].date]);
+        }
+    }
+    return newsAr;
 }

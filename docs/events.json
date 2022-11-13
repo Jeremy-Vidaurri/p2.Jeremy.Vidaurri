@@ -1,0 +1,129 @@
+{
+  "events": [
+    {
+      "date": "2022-11-19",
+      "time": "12:30 AM",
+      "title": "Neon Party"
+    },
+    {
+      "date": "2022-11-19",
+      "time": "11:30 AM",
+      "title": "Brunch"
+    },
+    {
+      "date": "2022-11-19",
+      "time": "1:30 PM",
+      "title": "Tailgate"
+    },
+    {
+      "date": "2022-11-19",
+      "time": "2:00 PM",
+      "title": "Game day"
+    },
+    {
+      "date": "2022-11-19",
+      "time": "9:00 PM",
+      "title": "Logies"
+    },
+    {
+      "date": "2022-11-20",
+      "time": "12:30 AM",
+      "title": "Drag Show"
+    },
+    {
+      "date": "2022-11-20",
+      "time": "11:30 AM",
+      "title": "Wallow in Pity"
+    },
+    {
+      "date": "2022-11-20",
+      "time": "1:30 PM",
+      "title": "Research"
+    },
+    {
+      "date": "2022-11-20",
+      "time": "9:00 PM",
+      "title": "Stream"
+    },
+    {
+      "date": "2022-11-21",
+      "time": "12:30 AM",
+      "title": "Drag Show"
+    },
+    {
+      "date": "2022-11-21",
+      "time": "11:30 AM",
+      "title": "Wallow in Pity"
+    },
+    {
+      "date": "2022-11-21",
+      "time": "1:30 PM",
+      "title": "Research"
+    },
+    {
+      "date": "2022-11-21",
+      "time": "9:00 PM",
+      "title": "Stream"
+    },
+    {
+      "date": "2022-11-22",
+      "time": "11:30 AM",
+      "title": "Wallow in Pity"
+    },
+    {
+      "date": "2022-11-22",
+      "time": "1:30 PM",
+      "title": "Research"
+    },
+    {
+      "date": "2022-11-22",
+      "time": "9:00 PM",
+      "title": "Stream"
+    },
+    {
+      "date": "2022-11-23",
+      "time": "11:30 AM",
+      "title": "Wallow in Pity"
+    },
+    {
+      "date": "2022-11-23",
+      "time": "1:30 PM",
+      "title": "Research"
+    },
+    {
+      "date": "2022-11-23",
+      "time": "9:00 PM",
+      "title": "Stream"
+    },
+    {
+      "date": "2022-11-24",
+      "time": "11:30 AM",
+      "title": "Wallow in Pity"
+    },
+    {
+      "date": "2022-11-24",
+      "time": "1:30 PM",
+      "title": "Research"
+    },
+    {
+      "date": "2022-11-24",
+      "time": "9:00 PM",
+      "title": "Stream"
+    },
+    {
+      "date": "2022-11-25",
+      "time": "11:30 AM",
+      "title": "Wallow in Pity"
+    },
+    {
+      "date": "2022-11-25",
+      "time": "1:30 PM",
+      "title": "Research"
+    },
+    {
+      "date": "2022-11-25",
+      "time": "9:00 PM",
+      "title": "Stream"
+    }
+  ]
+}
