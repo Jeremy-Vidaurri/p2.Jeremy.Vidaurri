@@ -1,6 +1,6 @@
-
 let capture;
 let weather;
+let weatherURL;
 let temperatures;
 let news;
 let stories;
@@ -9,14 +9,16 @@ let upcomingEvents;
 
 let alcFont;
 let start;
+let lastRequest;
 let curTime;
 let curDate;
+
 let mode = 0;
 let i = 0;
 
 function preload(){
     // API Request to get the weather
-    let weatherURL = 'https://api.weather.gov/gridpoints/TOP/48,32/forecast';
+    weatherURL = 'https://api.weather.gov/gridpoints/TOP/48,32/forecast';
     httpGet(weatherURL, 'json',false, function(response){
         weather = response;
     });
@@ -38,8 +40,9 @@ function setup(){
     capture = createCapture(VIDEO);
     capture.size(windowWidth-20,windowHeight-20);
     capture.hide();
-
+    console.log(windowWidth-20,windowHeight-20);
     start = millis();
+    lastRequest = millis();
     curDate = getDate();
     upcomingEvents = readEvents();
     stories = readNews();
@@ -57,13 +60,22 @@ function draw(){
     let fadeSpeed = 0.2;
     
     // Start screen takes 5s as to let the API requests make their returns
-    if(millis()-start < 5000){
+    if(millis()-start < 5000 || !weather){
         background(100);
         textFont(alcFont);
         textSize(48);
         fill(255);
         text("Welcome", capture.width/2-125,capture.height/2);
         text(curTime, capture.width/2-100,capture.height/2+50);
+        
+        // Don't transition unless we have weather data.
+        // Send another request if there wasn't one in the last 10 seconds.
+        if(!weather && millis()-lastRequest > 10000){
+            httpGet(weatherURL, 'json',false, function(response){
+                weather = response;
+            });
+            lastRequest = millis();
+        }
         return; 
 
     // Mode indicates whether the screen has finished transitioning.
