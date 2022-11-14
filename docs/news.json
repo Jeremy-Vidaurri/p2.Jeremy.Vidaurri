@@ -1,104 +1,264 @@
 {
-    "stories": [
-      {
-        "date": "2022-11-15",
-        "title": "Neon Party"
+  "articles": [
+    {
+      "source": {
+        "id": "the-wall-street-journal",
+        "name": "The Wall Street Journal"
       },
-      {
-        "date": "2022-11-15",
-        "title": "Brunch"
+      "author": "David Uberti, Eric Wallerstein, Patricia Kowsmann, Charley Grant, Gunjan Banerji, Dion Rabouin, James Willhite",
+      "title": "Stock Market Today: What to Watch - The Wall Street Journal",
+      "description": "The Wall Street Journal's full markets coverage.",
+      "url": "https://www.wsj.com/livecoverage/stock-market-news-today-11-14-2022",
+      "urlToImage": "https://images.wsj.net/im-589547/social",
+      "publishedAt": "2022-11-14T16:26:00",
+      "content": null
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "TheStreet"
       },
-      {
-        "date": "2022-11-15",
-        "title": "Tailgate"
+      "author": "Luc Olinga",
+      "title": "Elon Musk Names His Top 3 Cryptocurrencies - TheStreet",
+      "description": "The cryptocurrency industry is currently going through an unprecedented crisis after the bankruptcy of the FTX exchange.",
+      "url": "https://www.thestreet.com/investing/cryptocurrency/elon-musk-picks-his-three-winning-cryptocurrencies",
+      "urlToImage": "https://www.thestreet.com/.image/t_share/MTgwMzE4NTkxMDg0NjY4Nzgw/ethereum-bitcoin_2.jpg",
+      "publishedAt": "2022-11-14T15:54:40",
+      "content": "Elon Musk is a crypto evangelist. \r\nThe billionaire is one of the most influential voices in the cryptocurrency market. \r\nAn announcement or comment from him about a digital currency can radically ch… [+3383 chars]"
+    },
+    {
+      "source": {
+        "id": "the-verge",
+        "name": "The Verge"
       },
-      {
-        "date": "2022-11-15",
-        "title": "Game day"
+      "author": "Emma Roth",
+      "title": "Here is why Elizabeth Holmes thinks she should not go to prison - The Verge",
+      "description": "Elizabeth Holmes faces up to 20 years in prison, but she and her lawyers argue she deserves just 18 months of house arrest in an 82-page sentencing memorandum.",
+      "url": "https://www.theverge.com/2022/11/14/23455228/elizabeth-holmes-why-shouldnt-go-prison-theranos-court",
+      "urlToImage": "https://cdn.vox-cdn.com/thumbor/EJekymGys8HUBTZ3NfzgC2rfsAU=/0x0:2040x1360/1200x628/filters:focal(1020x680:1021x681)/cdn.vox-cdn.com/uploads/chorus_asset/file/23951558/VRG_Illo_STK177_L_Normand_ElizabethHolmes_Neutral.jpg",
+      "publishedAt": "2022-11-14T15:13:06",
+      "content": "Heres why Elizabeth Holmes thinks she shouldnt go to prison\r\nHeres why Elizabeth Holmes thinks she shouldnt go to prison\r\n / Prosecutors want to lock Elizabeth Holmes up for 15 years, but Holmes and … [+3017 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "CNBC"
       },
-      {
-        "date": "2022-11-15",
-        "title": "Logies"
+      "author": "Amelia Lucas",
+      "title": "Tyson CFO apologizes to investors after arrest for public intoxication, trespassing - CNBC",
+      "description": "Tyson Foods CFO John Tyson apologized to investors Monday for his arrest for public intoxication and trespassing.",
+      "url": "https://www.cnbc.com/2022/11/14/tyson-cfo-apologizes-to-investors-after-arrest-for-public-intoxication-trespassing.html",
+      "urlToImage": "https://image.cnbcfm.com/api/v1/image/107147258-1667838334149-mug.jpg?v=1668437570&w=1920&h=1080",
+      "publishedAt": "2022-11-14T14:52:50",
+      "content": "Tyson Foods CFO John Tyson apologized to investors on Monday for his arrest for public intoxication and trespassing.\r\nCEO Donnie King said that the company's independent board of directors is oversee… [+1231 chars]"
+    },
+    {
+      "source": {
+        "id": "the-wall-street-journal",
+        "name": "The Wall Street Journal"
       },
-      {
-        "date": "2022-11-14",
-        "title": "Drag Show"
+      "author": "Rebecca Elliott, Meghan Bobrowsky",
+      "title": "Elon Musk's Tesla Compensation Trial in Delaware Court Kicks Off - The Wall Street Journal",
+      "description": "Musk, along with other current and former Tesla directors, is expected to testify over his multibillion-dollar pay package",
+      "url": "https://www.wsj.com/articles/elon-musks-tesla-compensation-trial-in-delaware-court-set-to-kick-off-11668385268",
+      "urlToImage": "https://images.wsj.net/im-665074/social",
+      "publishedAt": "2022-11-14T14:47:00",
+      "content": "WILMINGTON, Del.The trial over \r\nElon Musks multibillion-dollar pay package at Tesla Inc. kicked off Monday morning in Delawares business-law court.A Tesla shareholder, Richard Tornetta, is seeking t… [+245 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "YouTube"
       },
-      {
-        "date": "2022-11-14",
-        "title": "Wallow in Pity"
+      "author": null,
+      "title": "How FTX Went Bankrupt | What Went Wrong | WSJ - Wall Street Journal",
+      "description": "Former CEO Sam Bankman-Fried was hailed as a savior of crypto before FTX's implosion.Cryptocurrency exchange FTX was seen as a survivor in a struggling indus...",
+      "url": "https://www.youtube.com/watch?v=AbgRB3arCpY",
+      "urlToImage": "https://i.ytimg.com/vi/AbgRB3arCpY/maxresdefault.jpg",
+      "publishedAt": "2022-11-14T14:44:47",
+      "content": null
+    },
+    {
+      "source": {
+        "id": "the-washington-post",
+        "name": "The Washington Post"
       },
-      {
-        "date": "2022-11-14",
-        "title": "Research"
+      "author": "Carolyn Y. Johnson",
+      "title": "Moderna says new booster increases protection against omicron subvariants - The Washington Post",
+      "description": "Moderna's omicron-targeted booster shot, which became available in September, increased the levels of antibodies that block the BA.5 coronavirus subvariant.",
+      "url": "https://www.washingtonpost.com/health/2022/11/14/moderna-booster-shot/",
+      "urlToImage": "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/PH2JGJFH2KVK5ERR36VRX5QCGU.jpg&w=1440",
+      "publishedAt": "2022-11-14T14:31:46",
+      "content": "Comment on this story\r\nVaccine maker Moderna announced Monday that its new omicron-targeted booster shot reinforces a key line of immune defense by increasing levels of coronavirus-fighting antibodie… [+4429 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "TM"
       },
-      {
-        "date": "2022-11-14",
-        "title": "Stream"
+      "author": "TMZ Staff",
+      "title": "Elon Musk Appears In Strange Video Shrouded In Darkness - TM",
+      "description": "The life of Elon Musk is so strange ... even he is perplexed by it, and obviously amused!!",
+      "url": "https://www.tmz.com/2022/11/14/elon-musk-strange-video-twitter-candles/",
+      "urlToImage": "https://imagez.tmz.com/image/01/16by9/2022/11/14/01eca69b945444a88f60634b269ae4cd_xl.jpg",
+      "publishedAt": "2022-11-14T14:21:00",
+      "content": "The life of Elon Musk is so strange ... even he is perplexed by it, and obviously amused!!\r\nTwitter's new honcho beamed into the B20 business conference in Indonesia Monday ... and was engulfed in da… [+1301 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "CNBC"
       },
-      {
-        "date": "2022-11-13",
-        "title": "Drag Show"
+      "author": "Jim Cramer",
+      "title": "What Cramer is watching Monday — two AMD upgrades, Microsoft hesitancy, Alzheimer's results - CNBC",
+      "description": "U.S. stock futures point to a lower open Monday after the S&P 500's best week since June.",
+      "url": "https://www.cnbc.com/2022/11/14/what-cramer-is-watching-monday-two-amd-upgrades-microsoft-hesitancy-alzheimers-results.html",
+      "urlToImage": "https://image.cnbcfm.com/api/v1/image/106965929-1635267016771-gettyimages-1192325200-CES_2020.jpeg?v=1668435400&w=1920&h=1080",
+      "publishedAt": "2022-11-14T14:16:40",
+      "content": null
+    },
+    {
+      "source": {
+        "id": "the-washington-post",
+        "name": "The Washington Post"
       },
-      {
-        "date": "2022-11-13",
-        "title": "Wallow in Pity"
+      "author": "Drew Harwell",
+      "title": "Fake Eli Lilly account may cost Twitter millions - The Washington Post",
+      "description": "« For $8, they're potentially losing out on millions of dollars in ad revenue, » said Amy O'Connor, a former senior communications official at Eli Lilly who now works at a trade association.",
+      "url": "https://www.washingtonpost.com/technology/2022/11/14/twitter-fake-eli-lilly/",
+      "urlToImage": "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/YZPFJBEKXMI6ZA4PBT67NHGOHQ.jpg&w=1440",
+      "publishedAt": "2022-11-14T14:00:00",
+      "content": "Comment on this story\r\nThe nine-word tweet was sent Thursday afternoon from an account using the name and logo of the pharmaceutical giant Eli Lilly and Co., and it immediately attracted a giant resp… [+9027 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "YouTube"
       },
-      {
-        "date": "2022-11-13",
-        "title": "Research"
+      "author": null,
+      "title": "Crypto is not dead, but it will be a lot smaller because of FTX, says 8VC's Joe Lonsdale - CNBC Television",
+      "description": null,
+      "url": "https://www.youtube.com/supported_browsers?next_url=https:%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DLORxcpf1x0I",
+      "urlToImage": null,
+      "publishedAt": "2022-11-14T13:43:49",
+      "content": "Your browser isnt supported anymore. Update it to get the best YouTube experience and our latest features. Learn more\r\nRemind me later"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "CNBC"
       },
-      {
-        "date": "2022-11-13",
-        "title": "Stream"
+      "author": "Stephanie Dhue, Sharon Epperson",
+      "title": "Leading through layoffs: How to manage workers on their way out — and those who stay - CNBC",
+      "description": "As the tech sector is rocked by layoffs at major employers, here's a look at how to manage both workers being made redundant and those staying on the payroll.",
+      "url": "https://www.cnbc.com/2022/11/14/heres-how-to-manage-workers-being-laid-off-and-those-who-stay.html",
+      "urlToImage": "https://image.cnbcfm.com/api/v1/image/107150719-1668195316412-gettyimages-1309115995-2.jpeg?v=1668433305&w=1920&h=1080",
+      "publishedAt": "2022-11-14T13:41:45",
+      "content": "High-profile layoffs at Meta and Twitter and planned cuts at Disney have heightened concerns on the part of managers and senior executives at employers nationwide who are struggling with how to lead … [+4143 chars]"
+    },
+    {
+      "source": {
+        "id": "business-insider",
+        "name": "Business Insider"
       },
-      {
-        "date": "2022-11-12",
-        "title": "Wallow in Pity"
+      "author": "Kate Duffy",
+      "title": "Elon Musk rejects former T-Mobile CEO's offer to run Twitter - Business Insider",
+      "description": "Twitter's owner Elon Musk replied \"no\" to John Legere's suggestion, saying that a technologist needed to be in charge.",
+      "url": "https://www.businessinsider.com/elon-musk-twitter-rejects-tmobile-ceo-john-legere-offer-tweet-2022-11",
+      "urlToImage": "https://i.insider.com/63722c4eb9d3990018370244?width=1200&format=jpeg",
+      "publishedAt": "2022-11-14T13:24:46",
+      "content": "Elon Musk has turned down an offer from the former CEO of T-Mobile, John Legere, who suggested running Twitter himself.\r\nLegere, who served as the cell service provider's boss from 2012 to 2020, wrot… [+1630 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Yahoo Entertainment"
       },
-      {
-        "date": "2022-11-12",
-        "title": "Research"
+      "author": "Crystal Chui, Gabriel Sanchez and Rafael Mendes",
+      "title": "US Earnings to Watch: Walmart, Home Depot, Nvidia, Gap - Yahoo Finance",
+      "description": "(Bloomberg) -- Even as most of the US reporting season nears its end, this week's earnings will put big-box chains, chipmakers and home-improvement retailers...",
+      "url": "https://finance.yahoo.com/news/us-earnings-watch-walmart-home-132250011.html",
+      "urlToImage": "https://s.yimg.com/ny/api/res/1.2/zwsg5BuxyERLyjykLyroOQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD03OTg-/https://media.zenfs.com/en/bloomberg_markets_842/3718163a03ee269f39774df31eda716e",
+      "publishedAt": "2022-11-14T13:22:50",
+      "content": "(Bloomberg) -- Even as most of the US reporting season nears its end, this weeks earnings will put big-box chains, chipmakers and home-improvement retailers under a stark spotlight amid a deteriorati… [+8069 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Gizmodo.com"
       },
-      {
-        "date": "2022-11-12",
-        "title": "Stream"
+      "author": "Jody Serrano",
+      "title": "Senator Threatens Elon Musk Over Twitter Chaos: 'Fix Your Companies. Or Congress Will.' - Gizmodo",
+      "description": "The threat came after Musk decided to troll Sen. Ed Markey instead of answering his questions about the verification chaos on the platform.",
+      "url": "https://gizmodo.com/ed-markey-elon-musk-fix-twitter-or-congress-will-1849778990",
+      "urlToImage": "https://i.kinja-img.com/gawker-media/image/upload/c_fill,f_auto,fl_progressive,g_center,h_675,pg_1,q_80,w_1200/78e2ede5bf34adb4f63929025c817324.jpg",
+      "publishedAt": "2022-11-14T12:55:00",
+      "content": "Although at times it seems like no one can stop Twitter owner Elon Musk from doing whatever he wants with the platform, Massachusetts Sen. Ed Markey recently reminded the billionaire that there is st… [+2699 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Investing.com"
       },
-      {
-        "date": "2022-11-11",
-        "title": "Wallow in Pity"
+      "author": "Investing.com",
+      "title": "'Magic: The Gathering' analysis prompts BofA to double downgrade Hasbro By Investing.com - Investing.com",
+      "description": "'Magic: The Gathering' analysis prompts BofA to double downgrade Hasbro",
+      "url": "https://www.investing.com/news/stock-market-news/magic-the-gathering-analysis-prompts-bofa-to-double-downgrade-hasbro-432SI-2943159",
+      "urlToImage": "https://i-invdn-com.investing.com/news/moved_LYNXMPEI160PO-ORUBS_L.jpg",
+      "publishedAt": "2022-11-14T12:54:00",
+      "content": "By Senad Karaahmetovic \r\nShares of Hasbro (NASDAQ:HAS) are down more than 6% in pre-open Monday trading after Bank of America analysts double-downgraded to Underperform from Buy as a result of the fi… [+1667 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "CNBC"
       },
-      {
-        "date": "2022-11-11",
-        "title": "Research"
+      "author": "Anmar Frangoul",
+      "title": "The 'world's largest floating wind farm' produces its first power - CNBC",
+      "description": "While wind is a renewable energy source, Hywind Tampen will be used to help power operations at oil and gas fields in the North Sea.",
+      "url": "https://www.cnbc.com/2022/11/14/the-worlds-largest-floating-wind-farm-produces-its-first-power.html",
+      "urlToImage": "https://image.cnbcfm.com/api/v1/image/106802780-1606399019200-gettyimages-1094940266-NORWAY_ECON.jpeg?v=1668429458&w=1920&h=1080",
+      "publishedAt": "2022-11-14T12:37:38",
+      "content": "A facility described as the world's largest floating wind farm produced its first power over the weekend, with more turbines set to come online before the year is out.\r\nIn a statement Monday, Norwegi… [+3982 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "YouTube"
       },
-      {
-        "date": "2022-11-11",
-        "title": "Stream"
+      "author": null,
+      "title": "Binance, Crypto.com CEOs race to reassure customers funds are safe - CNBC Television",
+      "description": "CNBC's MacKenzie Sigalos reports on the contagion effect from the collapse of Sam Bankman-Fried's bankrupt crypto exchange FTX. For access to live and exclus...",
+      "url": "https://www.youtube.com/watch?v=wOM3l7qnYO0",
+      "urlToImage": "https://i.ytimg.com/vi/wOM3l7qnYO0/maxresdefault.jpg",
+      "publishedAt": "2022-11-14T12:11:40",
+      "content": null
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "MarketWatch"
       },
-      {
-        "date": "2022-11-10",
-        "title": "Wallow in Pity"
+      "author": "Barbara Kollmeyer",
+      "title": "Markets are getting a wake-up call in 2023, says Morgan Stanley, which offers a plan for investors to get ready. - MarketWatch",
+      "description": "Critical information for the U.S. trading day",
+      "url": "https://www.marketwatch.com/story/markets-are-getting-a-wake-up-call-in-2023-says-morgan-stanley-which-offers-a-plan-for-investors-to-get-ready-11668427567",
+      "urlToImage": "https://images.mktw.net/im-450993/social",
+      "publishedAt": "2022-11-14T12:06:00",
+      "content": "According to Fed Reserve Gov. Christopher Waller and several strategists, last weeks softer-than-expected October CPI that sent the S&amp;P 500 to its best level in five months was overdone. His word… [+6809 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Business Wire"
       },
-      {
-        "date": "2022-11-10",
-        "title": "Research"
-      },
-      {
-        "date": "2022-11-10",
-        "title": "Stream"
-      },
-      {
-        "date": "2022-11-09",
-        "title": "Wallow in Pity"
-      },
-      {
-        "date": "2022-11-09",
-        "title": "Research"
-      },
-      {
-        "date": "2022-11-09",
-        "title": "Stream"
-      }
-    ]
-  }
+      "author": null,
+      "title": "AST SpaceMobile Deploys Largest-Ever Commercial Communications Array in Low Earth Orbit - Business Wire",
+      "description": "AST SpaceMobile, Inc. (“AST SpaceMobile”) (NASDAQ: ASTS), the company building the first and only space-based cellular broadband network accessible di",
+      "url": "https://www.businesswire.com/news/home/20221114005574/en/AST-SpaceMobile-Deploys-Largest-Ever-Commercial-Communications-Array-in-Low-Earth-Orbit",
+      "urlToImage": "https://mms.businesswire.com/media/20221114005574/en/1635712/23/2022-11-12_BlueWalker_3_satellite_fully_deployed_array.jpg",
+      "publishedAt": "2022-11-14T12:01:00",
+      "content": "MIDLAND, Texas--(BUSINESS WIRE)--AST SpaceMobile, Inc. (AST SpaceMobile) (NASDAQ: ASTS), the company building the first and only space-based cellular broadband network accessible directly by standard… [+8041 chars]"
+    }
+  ]
+}

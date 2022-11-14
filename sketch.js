@@ -13,6 +13,8 @@ let lastRequest;
 let curTime;
 let curDate;
 
+let weight;
+
 let mode = 0;
 let i = 0;
 
@@ -47,7 +49,8 @@ function setup(){
     curDate = getDate();
     upcomingEvents = readEvents();
     stories = readNews();
-    console.log(upcomingEvents);
+    console.log(stories);
+    weight = round(random(130,160));
 }
 
 function draw(){
@@ -104,7 +107,7 @@ function draw(){
     background(100-i,150-i*fadeSpeed);
     
     strokeWeight(1);
-    line(20,55,capture.width-20,55);
+    //line(20,55,capture.width-20,55);
     stroke(255);
     
     textSize(48);
@@ -113,8 +116,15 @@ function draw(){
     strokeWeight(0);
     text(curTime, capture.width/2,capture.height/2+50-i*floatSpeed);
 
+    textSize(32);
+    text("Current Weight:", capture.width/2,capture.height-50);
+    text(weight+" lbs",capture.width/2,capture.height-20);
+
+
     temperatures = getWeather();
+    
     drawCalendar(10,500,upcomingEvents);
+    drawNews(1500,500,stories);
     
 } 
 
@@ -134,9 +144,9 @@ function getWeather(){
         let date = weather.properties.periods[i].name;
 
         // We're only focused on day time temps.
-        if (weather.properties.periods[i].isDayTime){
+        if (weather.properties.periods[i].isDaytime){
             let tempNum = weather.properties.periods[i].temperature;
-            let temperature = "".concat(tempNum,weather.properties.periods[i].temperatureUnits);
+            let temperature = "".concat(tempNum,"°",weather.properties.periods[i].temperatureUnit);
             let desc = weather.properties.periods[i].shortForecast;
             
             temps.push([temperature,date,desc]);
@@ -201,7 +211,7 @@ function compareDates(d1, d2){
 
 // Parsing the JSON response and putting it into an array to read.
 function readEvents(){
-    const eventsArr = []
+    const eventsArr = [];
     for(let i = 0; i < events.events.length; i++){
         // Check the current date and only append today's events.
         if(compareDates(curDate,events.events[i].date) == 0){
@@ -213,14 +223,19 @@ function readEvents(){
 
 // Parsing the JSON response and putting it into an array to read.
 function readNews(){
-    const newsAr = []
-    for(let i = 0; i < news.stories.length; i++){
+    const newsArr = [];
+    for(let i = 0; i < news.articles.length; i++){
         // Check the current date and only append upcoming events.
-        if(compareDates(curDate,news.stories[i].date) == 1){
-            newsAr.push([news.stories[i].title,news.stories[i].date]);
-        }
+        let newsDate = news.articles[i].publishedAt;
+        newsDate = newsDate.substring(0,9);
+        let title = news.articles[i].title;
+        let publisher = title.slice(title.lastIndexOf('-')+1);
+        title = title.slice(0,title.lastIndexOf('-'));
+
+
+        newsArr.push([title,publisher,newsDate]);
     }
-    return newsAr;
+    return newsArr;
 }
 
 function drawCalendar(posX, posY, upcomingEvents){
@@ -230,7 +245,7 @@ function drawCalendar(posX, posY, upcomingEvents){
     textSize(32);
     fill(255);
     strokeWeight(0);
-    text("Events",posX+10,posY+40);
+    text("EVENTS",posX+10,posY+40);
     fill(175);
     textAlign(RIGHT);
     text(months[month()-1] +'. '+ day(),posX+380,posY+40);
@@ -243,7 +258,7 @@ function drawCalendar(posX, posY, upcomingEvents){
     
     if(upcomingEvents.length==0){
       fill(150);
-      textSize(20);
+      textSize(22);
       textAlign(LEFT);
       strokeWeight(0);
       text("You have no more events for today",posX+10,posY+80);
@@ -261,4 +276,46 @@ function drawCalendar(posX, posY, upcomingEvents){
       text(upcomingEvents[i][1],posX+380,posY+80+i*40);
     }
     
-  }
+}
+
+// FIX: Get highs and lows per day. Maybe switch to OpenWeatherMap?
+function drawWeather(posX, posY, temperatures){
+    var days = {
+      "Monday":"Mon",
+      "Tuesday":"Tues",
+      "Wednesday":"Wed",
+      "Thursday":"Thur",
+      "Friday":"Fri",
+      "Saturday":"Sat",
+      "Sunday":"Sun"
+    };
+    
+    fill(255);
+  
+    textSize(48);
+    text(temperatures[0][0],posX+260,posY+100);
+}
+
+function drawNews(posX,posY,stories){
+    textAlign(LEFT);
+    textSize(32);
+    fill(255);
+    strokeWeight(0);
+    text("NEWS",posX+10,posY+40);
+
+    strokeWeight(2);
+    line(posX+10,posY+50,posX+380,posY+50);
+    stroke(255);
+
+    for(let i=0; i<3; i++){
+        fill(150);
+        textSize(20);
+        strokeWeight(0);
+        text(stories[i][1],posX,posY+80+i*100);
+
+        textSize(24);
+        fill(255);
+        text(stories[i][0],posX+10,posY+110+i*100,350,100);
+
+    }
+}
