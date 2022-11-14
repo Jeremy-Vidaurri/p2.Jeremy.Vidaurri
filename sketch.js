@@ -107,11 +107,17 @@ function displayCam(){
 function getWeather(){
     const temps = [];
     for (let i = 0; i < weather.properties.periods.length;i++){
-        let tempNum = weather.properties.periods[i].temperature;
-        let temperature = "".concat(tempNum,weather.properties.periods[i].temperatureUnits);
-        let time = convertTime(weather.properties.periods[i].startTime);
+        let date = weather.properties.periods[i].name;
 
-        temps.push([temperature,time]);
+        // We're only focused on day time temps.
+        if (weather.properties.periods[i].isDayTime){
+            let tempNum = weather.properties.periods[i].temperature;
+            let temperature = "".concat(tempNum,weather.properties.periods[i].temperatureUnits);
+            let desc = weather.properties.periods[i].shortForecast;
+            
+            temps.push([temperature,date,desc]);
+        }
+
     }
     return temps;
 }
