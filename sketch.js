@@ -36,6 +36,7 @@ function preload(){
 
 function setup(){
     createCanvas(windowWidth-20, windowHeight-20);
+    rectMode(CORNER);
 
     capture = createCapture(VIDEO);
     capture.size(windowWidth-20,windowHeight-20);
@@ -46,7 +47,7 @@ function setup(){
     curDate = getDate();
     upcomingEvents = readEvents();
     stories = readNews();
-
+    console.log(upcomingEvents);
 }
 
 function draw(){
@@ -64,9 +65,10 @@ function draw(){
         background(100);
         textFont(alcFont);
         textSize(48);
+        textAlign(CENTER);
         fill(255);
-        text("Welcome", capture.width/2-125,capture.height/2);
-        text(curTime, capture.width/2-100,capture.height/2+50);
+        text("Welcome", capture.width/2,capture.height/2);
+        text(curTime, capture.width/2,capture.height/2+50);
         
         // Don't transition unless we have weather data.
         // Send another request if there wasn't one in the last 10 seconds.
@@ -83,10 +85,11 @@ function draw(){
         displayCam();
         background(100-i,150-i*fadeSpeed);
         
-        textFont(alcFont);
         textSize(48);
-        text("Welcome", capture.width/2-125,capture.height/2-i*floatSpeed);
-        text(curTime, capture.width/2-100,capture.height/2+50-i*floatSpeed);
+        textAlign(CENTER);
+        fill(255);
+        text("Welcome", capture.width/2,capture.height/2-i*floatSpeed);
+        text(curTime, capture.width/2,capture.height/2+50-i*floatSpeed);
 
         // Once the 'Welcome' text has disappeared, we have finished transition.
         if(capture.height/2-i*floatSpeed < 0){
@@ -100,10 +103,19 @@ function draw(){
     displayCam();
     background(100-i,150-i*fadeSpeed);
     
-    line(200,55,capture.width-200,55);
+    strokeWeight(1);
+    line(20,55,capture.width-20,55);
     stroke(255);
-    text(curTime, capture.width/2-100,capture.height/2+50-i*floatSpeed);
+    
+    textSize(48);
+    textAlign(CENTER);
+    fill(255);
+    strokeWeight(0);
+    text(curTime, capture.width/2,capture.height/2+50-i*floatSpeed);
+
     temperatures = getWeather();
+    drawCalendar(10,500,upcomingEvents);
+    
 } 
 
 // Method for displaying the webcam and flipping it so that it appears like a mirror.
@@ -173,24 +185,27 @@ function getDate(){
 }
 
 // Method for comparing two dates
-// If it returns 1, the first date is before or on the second date
+// If it returns 1, the first date is before the second date
+// 0 means they are the same
 // -1 means the first date is after the second date
 function compareDates(d1, d2){
     var date1 = Date.parse(d1);
     var date2 = Date.parse(d2);
-    if(date1 <= date2){
-        return 1
+    if(date1 < date2){
+        return 1;
+    } else if(date1 == date2){
+        return 0;
     }
-    return -1
+    return -1;
 }
 
 // Parsing the JSON response and putting it into an array to read.
 function readEvents(){
     const eventsArr = []
     for(let i = 0; i < events.events.length; i++){
-        // Check the current date and only append upcoming events.
-        if(compareDates(curDate,events.events[i].date) == 1){
-            eventsArr.push([events.events[i].title,events.events[i].date,events.events[i].time]);
+        // Check the current date and only append today's events.
+        if(compareDates(curDate,events.events[i].date) == 0){
+            eventsArr.push([events.events[i].title,events.events[i].time]);
         }
     }
     return eventsArr;
@@ -207,3 +222,43 @@ function readNews(){
     }
     return newsAr;
 }
+
+function drawCalendar(posX, posY, upcomingEvents){
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    
+    textAlign(LEFT);
+    textSize(32);
+    fill(255);
+    strokeWeight(0);
+    text("Events",posX+10,posY+40);
+    fill(175);
+    textAlign(RIGHT);
+    text(months[month()-1] +'. '+ day(),posX+380,posY+40);
+    
+    
+    strokeWeight(2);
+    line(posX+10,posY+50,posX+380,posY+50);
+    stroke(255);
+    
+    
+    if(upcomingEvents.length==0){
+      fill(150);
+      textSize(20);
+      textAlign(LEFT);
+      strokeWeight(0);
+      text("You have no more events for today",posX+10,posY+80);
+      return;
+    }
+    
+    for(let i = 0;i<upcomingEvents.length;i++){
+      fill(225);
+      textSize(24);
+      strokeWeight(0);
+      textAlign(LEFT);
+      text(upcomingEvents[i][0],posX+10,posY+80+i*40);
+      textAlign(RIGHT);
+      fill(150);
+      text(upcomingEvents[i][1],posX+380,posY+80+i*40);
+    }
+    
+  }
