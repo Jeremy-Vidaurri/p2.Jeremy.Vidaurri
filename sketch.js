@@ -1,6 +1,8 @@
 let capture;
+
 let weather;
 let weatherURL;
+let weatherIcon;
 let temperatures;
 let news;
 let stories;
@@ -14,6 +16,7 @@ let curTime;
 let curDate;
 
 let weight;
+let delta;
 
 let mode = 0;
 let i = 0;
@@ -34,6 +37,7 @@ function preload(){
     loadJSON('docs/news.json','json', function(response){
         news = response;
     });
+    weatherIcon = loadImage('img/weather.png');
 }
 
 function setup(){
@@ -47,10 +51,14 @@ function setup(){
     start = millis();
     lastRequest = millis();
     curDate = getDate();
+
     upcomingEvents = readEvents();
     stories = readNews();
-    console.log(stories);
+    
     weight = round(random(130,160));
+    delta = round(random(1,5));
+
+
 }
 
 function draw(){
@@ -118,13 +126,14 @@ function draw(){
 
     textSize(32);
     text("Current Weight:", capture.width/2,capture.height-50);
-    text(weight+" lbs",capture.width/2,capture.height-20);
+    text(weight+" lbs" + " (+"+ delta +" lbs)",capture.width/2,capture.height-20);
 
 
     temperatures = getWeather();
     
-    drawCalendar(10,500,upcomingEvents);
-    drawNews(1500,500,stories);
+    drawCalendar(10,600,upcomingEvents);
+    drawNews(10,100,stories);
+    drawWeather(canvas.width-400,100,temperatures);
     
 } 
 
@@ -140,18 +149,20 @@ function displayCam(){
 // Parsing the API return to store the temperatures in an array
 function getWeather(){
     const temps = [];
-    for (let i = 0; i < weather.properties.periods.length;i++){
+    for (let i = 0; i < 8;i+=2){
+        // The way the JSON is formatted, the high is given and then the next entry has the low. 
+        let high = weather.properties.periods[i].temperature;
+        let tempHigh = "".concat(high,weather.properties.periods[i].temperatureUnit);
+        let low = weather.properties.periods[i+1].temperature;
+        let tempLow = "".concat(low,weather.properties.periods[i+1].temperatureUnit);
+        
         let date = weather.properties.periods[i].name;
-
-        // We're only focused on day time temps.
-        if (weather.properties.periods[i].isDaytime){
-            let tempNum = weather.properties.periods[i].temperature;
-            let temperature = "".concat(tempNum,"°",weather.properties.periods[i].temperatureUnit);
-            let desc = weather.properties.periods[i].shortForecast;
-            
-            temps.push([temperature,date,desc]);
+        if(date == 'Tonight'){
+            i--;
         }
+            
 
+        temps.push([tempHigh,tempLow,date]);
     }
     return temps;
 }
@@ -238,6 +249,7 @@ function readNews(){
     return newsArr;
 }
 
+// Draw today's events 
 function drawCalendar(posX, posY, upcomingEvents){
     const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     
@@ -278,7 +290,7 @@ function drawCalendar(posX, posY, upcomingEvents){
     
 }
 
-// FIX: Get highs and lows per day. Maybe switch to OpenWeatherMap?
+// Draw the weather for the week
 function drawWeather(posX, posY, temperatures){
     var days = {
       "Monday":"Mon",
@@ -291,11 +303,43 @@ function drawWeather(posX, posY, temperatures){
     };
     
     fill(255);
-  
-    textSize(48);
-    text(temperatures[0][0],posX+260,posY+100);
+    strokeWeight(0);
+
+    textSize(24);
+    textAlign(LEFT);
+    text("Lubbock,TX",posX+10,posY+40);
+
+
+    image(weatherIcon,posX+20,posY+110,80,80);
+    textSize(62);
+    text(temperatures[0][0],posX+10,posY+100);
+
+    textSize(24);
+    fill(150);
+    textAlign(RIGHT);
+    text(weather.properties.periods[0].detailedForecast,posX+175,posY+40,200,200);
+
+    fill(255);
+    text("H:",posX+40,posY+300);
+    fill(150);
+    text("L:",posX+40,posY+340);
+
+    // Skip today's weather and show the next three days.
+    for(let i=1;i<4;i++){
+        textAlign(CENTER);
+        // Date
+        fill(150);
+        text(days[temperatures[i][2]], posX+20+i*100,posY+270);
+        // High
+        fill(255);
+        text(temperatures[i][0],posX+20+i*100,posY+300);
+        // Low
+        fill(150);
+        text(temperatures[i][1],posX+20+i*100,posY+340);
+    }
 }
 
+// Draw the latest news
 function drawNews(posX,posY,stories){
     textAlign(LEFT);
     textSize(32);
