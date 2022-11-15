@@ -18,7 +18,9 @@ let curDate;
 let weight;
 let delta;
 
-let mode = 0;
+let transition = false;
+let mode = true;
+let light;
 let i = 0;
 
 function preload(){
@@ -38,6 +40,7 @@ function preload(){
         news = response;
     });
     weatherIcon = loadImage('img/weather.png');
+    light = createImg('img/light.png',"power");
 }
 
 function setup(){
@@ -58,6 +61,9 @@ function setup(){
     weight = round(random(130,160));
     delta = round(random(1,5));
 
+    // Color picker needs to exist for the light mode, but by default hide it.
+    colorPicker = createColorPicker('#FFFFFF');
+    colorPicker.hide();
 
 }
 
@@ -69,7 +75,7 @@ function draw(){
 
     // Speeds for transitioning start screen
     let floatSpeed = 3.5;
-    let fadeSpeed = 0.2;
+    let fadeSpeed = 0.1;
     
     // Start screen takes 5s as to let the API requests make their returns
     if(millis()-start < 5000 || !weather){
@@ -92,9 +98,9 @@ function draw(){
         return; 
 
     // Mode indicates whether the screen has finished transitioning.
-    }else if(mode == 0){
+    }else if(!transition){
         displayCam();
-        background(100-i,150-i*fadeSpeed);
+        background(100-i,180-i*fadeSpeed);
         
         textSize(48);
         textAlign(CENTER);
@@ -104,7 +110,7 @@ function draw(){
 
         // Once the 'Welcome' text has disappeared, we have finished transition.
         if(capture.height/2-i*floatSpeed < 0){
-            mode = 1;
+            transition = true;
         }
         i++;
         return;
@@ -112,28 +118,35 @@ function draw(){
     
     // Base mirror
     displayCam();
-    background(100-i,150-i*fadeSpeed);
-    
-    strokeWeight(1);
-    //line(20,55,capture.width-20,55);
-    stroke(255);
-    
-    textSize(48);
-    textAlign(CENTER);
-    fill(255);
-    strokeWeight(0);
-    text(curTime, capture.width/2,capture.height/2+50-i*floatSpeed);
-
-    textSize(32);
-    text("Current Weight:", capture.width/2,capture.height-50);
-    text(weight+" lbs" + " (+"+ delta +" lbs)",capture.width/2,capture.height-20);
-
+    background(100-i,180-i*fadeSpeed);
 
     temperatures = getWeather();
-    
-    drawCalendar(10,600,upcomingEvents);
-    drawNews(10,100,stories);
-    drawWeather(canvas.width-400,100,temperatures);
+    if(mode){
+        textSize(48);
+        textAlign(CENTER);
+        fill(255);
+        strokeWeight(0);
+        text(curTime, capture.width/2,capture.height/2+50-i*floatSpeed);
+
+        textSize(32);
+        text("Current Weight:", capture.width/2,capture.height-50);
+        text(weight+" lbs" + " (+"+ delta +" lbs)",capture.width/2,capture.height-20);
+        drawCalendar(10,600,upcomingEvents);
+        drawNews(10,100,stories);
+        drawWeather(capture.width-400,100,temperatures); 
+        light.position(capture.width-100,capture.height-100);
+    } else{
+        noFill();
+        strokeWeight(75);
+        stroke(colorPicker.color());
+        rect(0,0,capture.width,capture.height);
+        strokeWeight(0);
+        colorPicker.show();
+        colorPicker.position(capture.width-160,capture.height-85);
+        
+        
+    }
+    light.mousePressed(function(){mode = !mode});
     
 } 
 
@@ -269,7 +282,7 @@ function drawCalendar(posX, posY, upcomingEvents){
     
     
     if(upcomingEvents.length==0){
-      fill(150);
+      fill(180);
       textSize(22);
       textAlign(LEFT);
       strokeWeight(0);
@@ -284,7 +297,7 @@ function drawCalendar(posX, posY, upcomingEvents){
       textAlign(LEFT);
       text(upcomingEvents[i][0],posX+10,posY+80+i*40);
       textAlign(RIGHT);
-      fill(150);
+      fill(180);
       text(upcomingEvents[i][1],posX+380,posY+80+i*40);
     }
     
@@ -315,26 +328,26 @@ function drawWeather(posX, posY, temperatures){
     text(temperatures[0][0],posX+10,posY+100);
 
     textSize(24);
-    fill(150);
+    fill(180);
     textAlign(RIGHT);
     text(weather.properties.periods[0].detailedForecast,posX+175,posY+40,200,200);
 
     fill(255);
     text("H:",posX+40,posY+300);
-    fill(150);
+    fill(180);
     text("L:",posX+40,posY+340);
 
     // Skip today's weather and show the next three days.
     for(let i=1;i<4;i++){
         textAlign(CENTER);
         // Date
-        fill(150);
+        fill(180);
         text(days[temperatures[i][2]], posX+20+i*100,posY+270);
         // High
         fill(255);
         text(temperatures[i][0],posX+20+i*100,posY+300);
         // Low
-        fill(150);
+        fill(180);
         text(temperatures[i][1],posX+20+i*100,posY+340);
     }
 }
@@ -352,7 +365,7 @@ function drawNews(posX,posY,stories){
     stroke(255);
 
     for(let i=0; i<3; i++){
-        fill(150);
+        fill(180);
         textSize(20);
         strokeWeight(0);
         text(stories[i][1],posX,posY+80+i*100);
