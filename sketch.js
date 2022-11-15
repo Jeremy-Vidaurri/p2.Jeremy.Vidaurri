@@ -135,6 +135,7 @@ function draw(){
         drawNews(10,100,stories);
         drawWeather(capture.width-400,100,temperatures); 
         light.position(capture.width-100,capture.height-100);
+        colorPicker.hide();
     } else{
         noFill();
         strokeWeight(75);
